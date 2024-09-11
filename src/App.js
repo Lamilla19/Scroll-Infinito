@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { useInfiniteScroll } from "./Hooks/useInfiniteScroll.ts";
 
-function App() {
+export default function App() {
+
+  const {posts , lastPostsElementRef , loading} = useInfiniteScroll();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Mi feed con scroll Infinito</h1>
+      <ul>
+        {posts.map((post,index)=>{
+          return (
+            <li key={post.id} ref={posts.length === index + 1 ? lastPostsElementRef : null}>
+              <h2>{posts.title}</h2>
+              <p>{posts.body}</p>
+            </li>
+          );
+        })}
+      </ul>
+      {loading && <p>loading...</p>}
     </div>
   );
 }
 
-export default App;
