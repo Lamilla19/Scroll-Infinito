@@ -14,6 +14,8 @@
   
   h1 {
     text-align: center;
+    background-color: rgb(99, 2, 2);
+    color: white;
   }
   
   ul {
@@ -24,12 +26,25 @@
   
   li {
     background: rgb(210, 110, 110);
+    width: 60%;
     margin: 10px 0;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
   }
   
   h2 {
     margin: 0 0 10px 0;
   }
+
+  #Contenedor-post{
+    transform: translateX(25%);
+    width: 100%;
+    height: 100%;
+  }
   
+  #contenedor-general{
+    background-color: rgb(240, 226, 226);
+    height: 100%;
+  }

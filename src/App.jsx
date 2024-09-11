@@ -5,8 +5,10 @@ export function App() {
   const { posts, lastPostsElementRef, loading } = useInfiniteScroll();
 
   return (
-    <div>
+    <div id="contenedor-general">
       <h1>Mi feed con scroll infinito</h1>
+
+      <div id="Contenedor-post">
       <ul>
         {posts.map((post, index) => (
           <li
@@ -19,6 +21,7 @@ export function App() {
         ))}
       </ul>
       {loading && <p>Loading...</p>}
+      </div>
     </div>
   );
 }
