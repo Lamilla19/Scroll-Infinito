@@ -28,25 +28,23 @@ export function useInfiniteScroll() {
     }, [hasMore, loadMorePosts]);
   
     const lastPostsElementRef = useCallback(
-      (node) => {
-        if (loading || !node || !hasMore) return;
-  
-        if (observer.current) observer.current.disconnect();
-  
-        observer.current = new IntersectionObserver((entries) => {
-          if (entries[0].isIntersecting && hasMore) {
-            setPage((prevPage) => prevPage + 1);
-          }
-        });
-  
-        if (node) observer.current.observe(node);
-  
-        return () => {
+        (node) => {
+          if (loading || !node || !hasMore) return;
+      
           if (observer.current) observer.current.disconnect();
-        };
-      },
-      [loading, hasMore]
-    );
+      
+          observer.current = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && hasMore) {
+              setPage((prevPage) => prevPage + 1);
+            }
+          });
+      
+          observer.current.observe(node);
+      
+          // No necesitamos retornar nada
+        },
+        [loading, hasMore]
+      );      
   
     return { posts, lastPostsElementRef, loading };
   }
